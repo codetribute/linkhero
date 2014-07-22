@@ -36,7 +36,7 @@ exports.pagination =function(req, res) {
 exports.search =function(req, res) {
     var regex = new RegExp(req.params.id, 'i');
 
-    goyGoyModel.find({title:  regex}).sort({ date: 'desc' }).exec( function (err, groups) {
+    goyGoyModel.find({ $or:[ {'title':regex}, {'tags':regex} ]}).sort({ date: 'desc' }).exec( function (err, groups) {
         var outModel = helpers.checkErr(models,groups,err);
         res.json(outModel)
 

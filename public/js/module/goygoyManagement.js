@@ -4,11 +4,13 @@ groupManagement = {
         title:'',
         link:'',
         icon:'red',
+		tags:'',
         Clear:function(){
             groupManagement.Model.id='';
             groupManagement.Model.title='';
             groupManagement.Model.link='';
             groupManagement.Model.icon='';
+			groupManagement.Model.tags='';
         }
     },
     Validate:function(){
@@ -22,7 +24,16 @@ groupManagement = {
         {
             $('#title').css('border','1px solid #ebebeb');
         }
-
+		
+		if($('#tags').val()=='' || $('#tags').val()=='undefined')
+        {
+            $('#tags').css('border','1px solid #ff6a7d');
+            success=false;
+        }else
+        {
+            $('#tags').css('border','1px solid #ebebeb');
+        }
+		
         if($('#link').val()=='' || $('#link').val()=='undefined')
         {
             $('#link').css('border','1px solid #ff6a7d');
@@ -38,7 +49,7 @@ groupManagement = {
         Clear:function(){
             $('#title').val('');
             $('#link').val('');
-
+			$('#tags').val('');
             $('#link-edit').val('')
             $('#title-edit').val('')
             $('#search-key').val('');
@@ -115,7 +126,7 @@ groupManagement = {
                                 ' <ul>' +
                                 '    <li><p class="date">' + element.date + '</p></li>' +
                                 '   <li><p class="date">-</p></li>' +
-                                '  <li><p class="user"> ' + element.source + '</p></li>' +
+                                '  <li><p class="user"> ' + element.tags + '</p></li>' +
                                 ' <li><p class="date">-</p></li>' +
 									' <li><p class="date">'+element.viewCount+' Views</p></li>' +
                                 ' </ul>' +
@@ -167,7 +178,7 @@ groupManagement = {
                         ' <ul>'+
                         '    <li><p class="date">'+ data.data.date +'</p></li>'+
                         '   <li><p class="date">-</p></li>'+
-                        '  <li><p class="user"> '+ data.data.source +'</p></li>'+
+                        '  <li><p class="user"> '+ data.data.tags +'</p></li>'+
                         ' <li><p class="date">-</p></li>'+
 
                         ' </ul>'+
