@@ -110,6 +110,7 @@ exports.create = function(req, res) {
 
     group.link= req.body.link;
     group.icon= req.body.icon;
+	  group.tags= req.body.tags;
     group.date = moment(new Date()).format("DD-MM-YYYY hh:mm");
     group.createDate =new Date();
 

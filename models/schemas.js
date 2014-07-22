@@ -20,6 +20,10 @@ module.exports = {
             type: String,
             required:false
         },
+		tags: {
+            type: String,
+            required:false
+        },
         createDate: {type: Date},
 		viewCount:{ type: Number, default: 0 }
 
