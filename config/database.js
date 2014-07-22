@@ -5,12 +5,12 @@ exports.ConStr = function(app){
     }
     else{
         var mongo = {
-            "hostname":"ds061208.mongolab.com",
-            "port":61208,
-            "username":"goygoy",
-            "password":"goygoygoygoy",
+            "hostname":"ds033599.mongolab.com",
+            "port":33599,
+            "username":"linkhero",
+            "password":"147258369",
             "name":"",
-            "db":"goygoy"
+            "db":"linkhero"
         }
     }
     var generate_mongo_url = function(obj){
