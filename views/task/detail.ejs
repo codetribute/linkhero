@@ -1,0 +1,115 @@
+<% layout('../layout') -%>
+
+<script src="../../js/module/noteMarkManagement.js"></script>
+
+<script src="../../js/libs/run_prettify.js"></script>
+
+<div class="wrapper margint20 notemark-detail">
+    <div class="row">
+
+        <div class="four columns centered margint20" id="action-c">
+            <div class="four columns "> <div class="nt-btn blue ">
+                    <i class="icon-arrow-left"></i><a href="/notemark/list/<%=group%>" class="first back-notemarks"> Back</a>
+                </div>
+            </div>
+            <div class="four columns ">
+                <div class="nt-btn light-green edit-notemark" data-id="<%=_id%>">
+                    <i class="icon-pencil"></i><a class="first"> Edit</a>
+                </div>
+            </div>
+            <div class="four columns ">
+                <div class="add-notemark-btn nt-btn red">
+                    <i class="icon-cancel"></i><a class="first">DELETE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row margint40">
+
+        <div class="six columns centered marginb40">
+
+               <h1 class="notemark-title" style="text-align: center"><%=title%></h1>
+               <h5 class="sub-title"><%=subTitle%>
+               </h5>
+        </div>
+        <div class="ten columns centered">
+            <pre class="prettyprint ">
+                <%=content%>
+            </pre>
+        </div>
+    </div>
+</div>
+<div id="" class="add-notemark-mdl">
+    <div class="wrapper">
+        <div class="row">
+            <div class="four columns centered text-center field margint60" >
+                <h3>Notemarks</h3>
+                <p>Update notemark</p>
+                <input type="hidden" id="notemark-id" value="<%=_id%>">
+                <input type="hidden" id="notemark-group-id" value="<%=group%>">
+                <input type="text" id="title" placeholder="Title" style="margin-top:10px;"class="text input">
+                <input type="text" id="subTitle" placeholder="Sub Title" style="margin-top:10px;" class="text input">
+                <input type="text" id="tags" placeholder="Tags" style="margin-top:10px;" class="text input">
+                 <ul class="group-color">
+                    <li class="red" data-color="red"></li>
+                    <li class="yellow"  data-color="yellow"></li>
+                    <li class="blue"  data-color="blue"></li>
+                    <li class="green"  data-color="green"></li>
+                    <li class="purple"  data-color="purple"></li>
+					<li class="one-blue"  data-color="one-blue"></li>
+					<li class="one-yellow"  data-color="one-yellow"></li>
+                </ul>
+				<textarea rows="3" placeholder="Content" id="content"  style="margin-top:10px;" class="input textarea"></textarea>
+
+
+                <div class="medium btn" id="update-notemarks" style="margin-top:20px;background: #53Cace;width: 100%;"><a href="#">Güncelle</a></div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+
+        $('.back-notemarks').on('click', function(){var thisHref = $(this).attr('href'); window.location.href = thisHref})
+
+        $('ul.group-color li').on('click',function(){
+
+            $('ul.group-color li .icon-check').remove();
+            $('ul.group-color li').removeAttr('id', 'selected');
+            $(this).attr('id', 'selected');
+            $(this).html('<i class="icon-check"></i>');
+
+        });
+
+
+        $('.edit-notemark').click(function(){
+            var $this = $(this);
+            noteMarkManagement.Model.Clear();
+            noteMarkManagement.Model.id =$this.data('id');
+
+            noteMarkManagement.Edit();
+        })
+
+
+        $('#update-notemarks').on("click",function(){
+            var $this = $(this);
+
+            noteMarkManagement.Model.Clear();
+            noteMarkManagement.Model.id = $('#notemark-id').val();
+            noteMarkManagement.Model.color = $('.add-notemark-mdl  ul.group-color li#selected').data('color');
+            noteMarkManagement.Model.title = $('#title').val();
+            noteMarkManagement.Model.subTitle = $('#subTitle').val();
+            noteMarkManagement.Model.group = $('#notemark-group-id').val();
+            noteMarkManagement.Model.content = $('#content').val();
+
+            noteMarkManagement.Update();
+        });
+    });
+</script>
+
+
+
+

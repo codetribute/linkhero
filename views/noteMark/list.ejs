@@ -1,0 +1,175 @@
+<% layout('../layout') -%>
+
+<script src="../../js/module/noteMarkManagement.js"></script>
+<a class="edit-group-btn switch" gumby-trigger="#modalEditNotemark"></a>
+
+<div id="edit-group-model" gumby-trigger="#modalEditNotemark"></div>
+<div class="wrapper margint40 marginb60" id="personal">
+    <div class="row">
+        <div class="three columns centered field">
+
+            <input type="text" placeholder="Search" style="text-align:center;" class="text input">
+        </div>
+        <div class="six columns centered margint20" id="action-note-list-c">
+            <div class="three columns "> <div class="add-group-btn back-notemarks" >
+                    <a href="/groups" class="first"> <i class="fa fa-chevron-left"></i>Back</a>
+                </div>
+            </div>
+            <div class="three columns ">
+                <div class="add-notemark-btn add-group-btn  switch" gumby-trigger="#add-notemark-modal">
+                    <a class="first"><i class="fa fa-plus"></i>Create</a>
+                </div>
+            </div>
+            <div class="three columns ">
+                <div class="add-group-btn edit-notemark">
+                    <a class="first"><i class="fa fa-pencil"></i> Edit</a>
+                </div>
+            </div>
+            <div class="three columns ">
+                <div class="add-group-btn archive">
+                    <a class="first"><i class="fa fa-folder"></i> Archive</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row margint20 paddingt20 notemarks" id="notemark">
+        <% for(var i=0; i<noteMarks.length; i++) { %>
+        <a class=" ui-state-default" href="/notemark/detail/<%=noteMarks[i]._id%>">
+            <div class="three columns group-item" data-id="<%=noteMarks[i]._id%>" >
+                <div class="four columns left ">
+                    <div class="group-icon <%=noteMarks[i].color%>">
+                        <i class="icon-star"></i>
+                    </div>
+                </div>
+                <div class="eight columns right">
+                    <h3><%=noteMarks[i].title%></h3>
+                    <p><%=noteMarks[i].subTitle.length>= 28 ? noteMarks[i].subTitle.substring(0,28)+'...' : noteMarks[i].subTitle%></p>
+                    <div class="item-action">
+                        <a  target="_blank" href="/group/affectedlist/<%=noteMarks[i]._id%>" class="delete">Sil</a>
+                        <a href="#" class="edit switch edit-group" data-id="<%=noteMarks[i]._id%>">Düzenle</a>
+                        <a href="#" class="edit switch edit-group" data-id="<%=noteMarks[i]._id%>">Arşiv</a>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <% } %>
+    </div>
+
+</div>
+
+<div class="modal" id="modalEditNotemark">
+    <div class="content">
+        <a class="close switch" gumby-trigger="|#modalEditNotemark"><i class="icon-cancel" ></i></a>
+        <div class="row">
+            <div class="ten columns centered text-center field" >
+                <h3>Group</h3>
+                <p>Edit group</p>
+				<input type="hidden" id="edit-notemark-id">
+                <input type="text" id="title-edit" placeholder="Title" style="margin-top:10px;"class="text input">
+                <input type="text" id="subTitle-edit" placeholder="Sub Title" style="margin-top:10px;" class="text input">
+				<input type="text" id="edit-tags" placeholder="Tags" style="margin-top:10px;" class="text input">
+                  <ul class="group-color">
+                    <li class="red" data-color="red"></li>
+                    <li class="yellow"  data-color="yellow"></li>
+                    <li class="blue"  data-color="blue"></li>
+                    <li class="green"  data-color="green"></li>
+                    <li class="purple"  data-color="purple"></li>
+					<li class="one-blue"  data-color="one-blue"></li>
+					<li class="one-yellow"  data-color="one-yellow"></li>
+                </ul>
+                <div class="medium btn" id="update-notemark-btn" style="margin-top:20px;background: #53Cace;width: 100%;"><a href="#">Kaydet</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="" class="add-notemark-mdl">
+<div class="wrapper">
+         <div class="row">
+
+             <div class="two columns centered">
+                 <h3>Notemarks</h3>
+                 <p>Update notemark</p>
+             </div>
+            <div class="eight columns centered text-center field" >
+                <div class="five columns text-center field" >   <input type="text" id="title" placeholder="Title" style="margin-top:10px;"class="text input"></div>
+                <div class="seven columns text-center field" style="margin-left:10px;"> <input type="text" id="subTitle" placeholder="Sub Title" style="margin-top:10px;" class="text input"></div>
+                <div class="five columns text-center field " ><input type="text" id="tags" placeholder="Tags" style="margin-top:10px;" class="text input"></div>
+                <div class="six columns text-center field" style="margin-left:10px;"> <ul class="group-color">
+                        <li class="red" data-color="red"></li>
+                        <li class="yellow"  data-color="yellow"></li>
+                        <li class="blue"  data-color="blue"></li>
+                        <li class="green"  data-color="green"></li>
+                        <li class="purple"  data-color="purple"></li>
+                        <li class="one-blue"  data-color="one-blue"></li>
+                        <li class="one-yellow"  data-color="one-yellow"></li>
+                    </ul></div>
+                <input type="hidden" id="notemark-id" value="">
+                <input type="hidden" id="notemark-group-id" value="<%=groupId%>">
+
+                <textarea rows="7" placeholder="Content" id="content"  style="margin-top:10px;" class="input textarea"></textarea>
+
+                <div class="four columns " style="float: right">
+                    <div id="save-notemark" class="notemark-form-btn save-or-update">
+                        SAVE
+                    </div>
+                    <div id="update-notemarks" class="notemark-form-btn save-or-update">
+                        UPDATE
+                    </div>
+                    <div class="notemark-form-btn cancel cancel-all">
+                        CANCEL
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+	</div>
+</div>
+<script>
+    var oldieCheck = Boolean(document.getElementsByTagName('html')[0].className.match(/\soldie\s/g));
+    if(!oldieCheck) {
+        document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"><\/script>');
+    } else {
+        document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"><\/script>');
+    }
+</script>
+<script>
+    if(!window.jQuery) {
+        if(!oldieCheck) {
+            document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+        } else {
+            document.write('<script src="js/libs/jquery-1.10.1.min.js"><\/script>');
+        }
+    }
+</script>
+
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+<style>
+    .modal > .content {
+        background: none repeat scroll 0 0 #FFFFFF;
+        margin: 0 auto;
+        max-height: 50%;
+        min-height: 45%;
+        overflow: auto;
+        padding:20px 10px 0px 10px;
+        position: relative;
+        top: 25%;
+        width: 25%;
+        z-index: 2;
+
+    }
+
+</style>
+<script>
+    $(document).ready(function() {
+        $(function() {
+            $( "#notemark" ).sortable();
+            $( "#notemark" ).disableSelection();
+        });
+    });
+</script>

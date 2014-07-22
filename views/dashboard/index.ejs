@@ -1,0 +1,299 @@
+<% layout('../layout') -%>
+  <!-- Fixed navbar -->
+    <div class="navbar navbar-default " role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+		     <h3 style="margin-top:14px !important;padding-left:15px;font-size:19px;"><i style="color:#ff6a7d" class="fa fa-dot-circle-o"></i> Goy-Goy <small> <sup>BETA</sup>  </small><small></small></h3>
+          </ul>
+          <ul style="width:330px;float:right;">
+            <li>
+			<p class="sign-have">Have an account?</p>
+				<div class="sign-btn-con">
+					<a href="#" class="m-red-c sign-in-opens">SIGN IN</a>
+					<a href="#">SIGN UP</a></div>
+				</div>
+				 <div class="sign-in-control">
+			<input type="text" placeholder="Name" id="name" name="name" style="font-size:12px;padding-left:8px;width:21%;float:left;" class="text input add-note">
+			<input type="text" placeholder="Email" id="email" name="title" style="font-size:12px;padding-left:8px;width:30%;float:left;margin-left:5px;" class="text input add-note">
+			<input type="password" placeholder="Password" id="password" name="link" style="font-size:12px;padding-left:8px;width: 20%;margin-left:5px;float:left;"  class="text input add-note">
+			 <div  class=" sign-btn">
+				SIGN-IN
+			</div>
+         </div>
+			</li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	<div class="sub-menu">
+		<ul>
+			<li><i  class="fa fa-dot-circle-o"></i><h5>GOYGOY</h5></li>
+			<li><i  class="fa fa-circle-o"></i><h5>DESIGN</h5></li>
+			<li><i  class="fa fa-circle-o"></i><h5>STARTED</h5></li>
+			<li class="last"><i  class="fa fa-circle-o"></i><h5>WEB LINK</h5></li>
+		</ul>
+	</div>
+<script src="../../js/module/goygoyManagement.js"></script>
+<script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+<div class="container">
+ <!--   <div class="row">
+        <div class="col-md-7">
+
+            <h3><i style="color:#ff6a7d" class="fa fa-dot-circle-o"></i> Goy-Goy <small> <sup>BETA</sup>  </small><small></small></h3>
+        </div>
+		<div class="col-md-5 ">
+		 <div class="sign-in-control">
+			<input type="text" placeholder="Name" id="name" name="name" style="font-size:12px;padding-left:8px;width:21%;float:left;" class="text input add-note">
+			<input type="text" placeholder="Email" id="email" name="title" style="font-size:12px;padding-left:8px;width:30%;float:left;margin-left:5px;" class="text input add-note">
+			<input type="password" placeholder="Password" id="password" name="link" style="font-size:12px;padding-left:8px;width: 20%;margin-left:5px;float:left;"  class="text input add-note">
+			 <div  class=" sign-btn">
+				SIGN-IN
+			</div>
+         </div>
+		<div class="sign-btn-con"><a href="#" class="m-red-c sign-in-open">SIGN IN</a>
+          <a href="#">SIGN UP</a></div>
+        </div>
+    </div>-->
+
+
+    <div class="row mt-30">
+        <div class="col-md-8" style="margin-left: 30px; padding-top: 5px;">
+
+            <div class=" n-icon-btn search-goygoy">
+                <i  class="fa fa-search"></i>
+            </div>
+            <div id="" class=" n-icon-btn ">
+                <i  class="fa fa-filter"></i>
+            </div>
+            <a href="" class="refresh-page n-icon-btn">
+                <i  class="fa fa-refresh"></i>
+            </a>
+            <div  class="add-item create-goygoy n-btn">
+                CREATE
+            </div>
+
+        </div>
+        <div class="col-md-7" style="margin-left: 30px; padding-top: 5px;">
+        <div class="search-con">
+            <div class="inp">
+
+                <input type="text" placeholder="Keyword" id="search-key" name="title" style=" margin-left: 5px;
+    padding-left: 10px;width:100%;" class="text input add-note">
+            </div>
+            <div style="float: left;height: 34px;padding: 7px;background: #ff6a7d;"  class="search-goygoy-act n-icon-btn ">
+                <i  class="fa fa-search"></i>
+            </div>
+        </div></div>
+        <div class="col-md-6 create-form">
+
+
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane tab-item active" id="home">
+                    <input type="text" placeholder="Title" id="title" name="title" style="padding-left:10px;width:30%;" class="text input add-note">
+                    <input type="text" placeholder="Link" id="link" name="link" style="padding-left:10px;width: 60%;margin-left:5px;"  class="text input add-note">
+                </div>
+                <div class="tab-pane tab-item" id="profile">	<input type="text" placeholder="Add Note" style="text-align:center;" class="text input add-note">
+
+                </div>
+                <div class="tab-pane tab-item" id="messages">	 <input type="text" placeholder="Add Link" style="text-align:center;" class="text input add-note"></div>
+                <div class="tab-pane tab-item" id="settings">	 <input type="text" placeholder="Add Other" style="text-align:center;" class="text input add-note"></div>
+            </div>
+            <ul class="nav nav-tabs add-options">
+                <li class="active"><i  class="fa fa-link grey"></i><a href="#home" data-toggle="tab">Link</a></li>
+                <div id="save-goygoy"  class="add-item n-btn ">
+                    SAVE
+                </div>
+                <div id=""  class="cancel-goygoy n-btn ">
+                    CANCEL
+                </div>
+
+               <!-- <li><i  class="fa fa-flask grey"></i><a href="#profile" data-toggle="tab">Idea</a></li>
+                <li><i  class="fa fa-link grey"></i><a href="#messages" data-toggle="tab"> Link</a></li>
+                <li><i  class="fa fa-send-o grey"></i><a href="#settings" data-toggle="tab">Other</a></li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-30">
+        <div class="col-md-12">
+            <ul class="note-ul">
+                <% for(var i=0; i<groups.length; i++) { %>
+                <li><i  class="fa fa-dot-circle-o pink"></i> <a href="<%=groups[i].link%>"  target="_blank" data-id="<%=groups[i]._id%>" class="title">  <%=groups[i].title%> </a>
+
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">  <%=groups[i].date%></p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user"> <%=groups[i].source%></p></li>
+							<li><p class="date">-</p></li>
+							<li><p class="user"> <%=groups[i].viewCount%> Views</p></li>
+                        </ul>
+                    </div>
+                   <!-- <div class="video-thumbnail">
+                        <i  class="fa fa-play pink"></i>
+                    </div>
+                    <div class="image-thumbnail">
+                        <i  class="fa fa-image pink"></i>
+                    </div>-->
+                </li>
+
+                <% } %>
+
+
+              <!--  <li><i  class="fa fa-dot-circle-o pink"></i> <p class="title">I can't  another . Please let me know what you think.</p>
+
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">01.08.2014</p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user">C.ARKIN</p></li>
+                        </ul>
+                    </div>
+                    <div class="video-thumbnail">
+                        <i  class="fa fa-play pink"></i>
+                    </div>
+                </li>
+                <li><i  class="fa fa-link grey"></i> <p class="title">Another making, I wish I could show you full pixels but at this time I can't. Please let me know  this shot!</p>
+
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">01.08.2014</p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user">SEMIH</p></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><i  class="fa fa-send-o blue"></i> <p class="title"> Here's another project in  Please let me know what you think of this know?</p>
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">01.08.2014</p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user">FATIHYIKAR</p></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <i  class="fa fa-flask yellow"></i> <p class="title">Project in the making, I wish I could show you full pixels  at this  of this but.</p>
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">01.08.2014</p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user">AHMET</p></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <i  class="fa fa-thumb-tack orange"></i>
+                    <p class="title">Project in the making, I wish I could show you full pixels  at this  of this but.</p>
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">01.08.2014</p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user">SEMIH</p></li>
+                        </ul>
+
+
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+<div class="col-md-4">
+    <ul class="paginations">
+        <% for(var i=0; i<pagination.length; i++) { %>
+        <li data-id="<%=pagination[i].skip%>" class=""><a onclick="groupManagement.Paginate(<%=pagination[i].skip%>)">  <%=pagination[i].title%></a></li>
+        <%}%>
+    </ul>
+</div>
+</div>
+</div>
+<script>
+    $('.create-goygoy').click(function(){
+        $('.search-con').hide();
+        $('#save-goygoy').show();
+    });
+
+    $('.cancel-goygoy').click(function(){
+        $('.create-form').hide();
+
+        $('#title').val('');
+
+        $('#link').val('');
+    });
+
+    $('.search-goygoy').click(function(){
+        $('.create-form').hide();
+        $('.search-con').show();
+		$('#search-key').focus();
+    });
+	
+	 $('.search-goygoy-act').click(function(){
+        groupManagement.Model.Clear();
+		groupManagement.Model.title = $('#search-key').val();
+		groupManagement.Search();
+    });
+	
+	 $('.title').click(function(){
+	 
+		groupManagement.View($(this).data('id'));
+    });
+	
+	$('.sign-in-open').click(function(){
+	 
+		$('.sign-in-control').show();
+		$('.sign-btn-con').hide();
+    });
+	
+	$('.sign-in-act').click(function(){
+	 
+		groupManagement.View($(this).data('id'));
+    });
+	
+    $('#save-goygoy').click(function(){
+
+        groupManagement.Model.Clear();
+
+        groupManagement.Model.title = $('#title').val();
+        groupManagement.Model.link = $('#link').val();
+        groupManagement.Model.icon= "play";
+
+        groupManagement.Create();
+
+        $('#title').val('');
+
+        $('#link').val('');
+    });
+
+
+    $('#search-key').keydown(function(e){
+        if (e.keyCode == 13) {
+            
+			groupManagement.Model.Clear();
+			groupManagement.Model.title = $('#search-key').val();
+			groupManagement.Search();
+		
+            return false;
+        }
+    });
+
+
+
+</script>
+<script>
+    $(document).ready(function() {
+
+        groupManagement.FormElement.Clear();
+    });
+</script>

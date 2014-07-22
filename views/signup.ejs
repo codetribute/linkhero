@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/style.css" media="screen" type="text/css" />
+
+</head>
+<body>
+<div id="login">
+
+    <h1><strong>Welcome.</strong> Please sign up.</h1>
+
+    <form action="/signup" method="post">
+
+        <fieldset>
+
+            <p><input type="text" required value="Username"  name="email" onBlur="if(this.value=='')this.value='Username'" onFocus="if(this.value=='Username')this.value='' "></p> <!-- JS because of IE support; better: placeholder="Username" -->
+
+            <p><input type="password" required value="Password" name="password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "></p> <!-- JS because of IE support; better: placeholder="Password" -->
+
+            <p><input type="submit" value="Sign Up"></p>
+
+        </fieldset>
+
+        <p><a href="/login">Back to login</a></p>
+    </form>
+
+
+
+</div> <!-- end login -->
+
+</body>
+</html>

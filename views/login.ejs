@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+<style>
+body{background:#f7f8f8 !important;}
+    .field .input {
+        position: relative;
+        padding: 0 10px;
+        border: none !important;
+        height: 50px !important;
+        line-height: 34px;
+        color: #444 !important;
+        font-size: 14px !important;
+        background-color: #e9e9e9 !important;
+        border-radius: 1px !important;
+    }
+.sign-up {
+    background-color: #008dde;
+    border: none;
+    border-radius: 2px;
+
+    color: #f4f4f4;
+    cursor: pointer;
+    height: 50px;
+    text-transform: uppercase;
+    width: 298px;
+    margin-top:10px !important;
+}
+</style>
+</head>
+<body>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../../css/gumby-ovveride.css">
+<link rel="stylesheet" href="../../css/gumby.css">
+<div class="wrapper" id="social-login">
+    <div class="row">
+
+
+
+        <div class="three columns centered field margint150">
+            <form action="/login" method="post">
+                <p>  <% if (message.length > 0) { %>
+                <div class="alert alert-danger"><%= message %></div>
+                <% } %>
+                </p>
+                <h5>Login</h5>
+                <p>Please login here</p>
+                <input type="text" id="email" name="email" placeholder="User Name" style="margin-top:10px;" class="text input">
+                <input type="password" id="password"  name="password" placeholder="Password" style="margin-top:10px;" class="text input">
+                <input type="submit" value="Login" class="sign-up">
+            </form>
+        </div>
+        <div class="two columns centered margint40">
+            <h5>Or Social Login</h5>
+        </div>
+        <div class="five columns centered">
+            <div class="social-container">
+                <a href="/auth/facebook" class="s-btn facebook-c"><div class="in-con"><i class="fa fa-facebook"></i> Facebook</div></a>
+
+                <a href="/auth/google" class="s-btn twitter-c"><div class="in-con"><i class="fa fa-twitter"></i>Twitter</div></a>
+                <a href="/auth/google" class="s-btn google-c"><div class="in-con"><i class="fa fa-google"></i>Google</div></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--
+<div id="login">
+
+    <% if (message.length > 0) { %>
+    <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <br/>
+    <h1><strong>Welcome.</strong> Please login.</h1>
+
+    <form action="/login" method="post">
+
+        <fieldset>
+
+            <p><input type="text"  name="email" required value="Username" onBlur="if(this.value=='')this.value='Username'" onFocus="if(this.value=='Username')this.value='' "></p>
+
+            <p><input type="password" name="password" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "></p>
+
+            <p><a href="#">Forgot Password?</a></p>
+
+            <p><input type="submit" value="Login"></p>
+
+            <p>
+
+                <a href="/signup" class="facebook-before ">
+                <button type="button" class="sign-up">Sign Up</button></a>
+
+            </p>
+        </fieldset>
+
+    </form>
+
+    <p><span class="btn-round">or</span></p>
+
+    <p>
+
+        <a href="/auth/google" class="facebook-before "style="background:#dd3b30;"><span class="fontawesome-google-plus"></span></a>
+        <button class="facebook" style="background:#dd4b39;">Login Using Google</button>
+
+    </p>
+
+ <p>
+
+          <a href="/auth/facebook" class="facebook-before" ><span class="fontawesome-facebook" ></span></a>
+          <button class="facebook" >Login Using Facebook</button>
+
+      </p>
+      <p>
+
+          <a href="/auth/twitter" class="twitter-before"><span class="fontawesome-twitter"></span></a>
+          <button class="twitter">Login Using Twitter</button>
+
+      </p>
+  </div>
+
+</body>
+</html>

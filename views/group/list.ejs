@@ -1,0 +1,252 @@
+<% layout('../layout') -%>
+
+<script src="../../js/module/groupManagement.js"></script>
+
+<a class="edit-group-btn switch" gumby-trigger="#modalEditGroup"></a>
+
+<div id="edit-group-model" gumby-trigger="#modalEditGroup"></div>
+<div class="wrapper margint40 marginb60" id="personal">
+    <div class="row">
+        <div class="three columns centered field">
+
+            <img width="48" src="../../img/notemark_logo.png">
+        </div>
+        <div class="five columns centered margint20" id="action-c">
+            <div class="four columns "> <div class="add-group-btn switch" gumby-trigger="#modal1">
+                    <a class="first"> Search</a>
+                </div>
+            </div>
+            <div class="four columns ">
+                <div class="add-group-btn switch" gumby-trigger="#modal1">
+                    <a class="first"> Add Group</a>
+                </div>
+            </div>
+            <div class="four columns ">
+                <div class="add-group-btn edit-groups">
+                    <a class="first"> Edit</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="" class="affected-mdl">
+        <div id="personal" class="wrapper margint40 marginb60">
+            <div class="row">
+                <div class="one columns centered field margint20">
+                    <div class="sixcolumns left">
+                        <div class="group-icon yellow">
+                            <i class="icon-traffic-cone"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="eight columns centered margint50 paddingb50" >
+                    <p style="font-size: 14px; color: rgb(119, 119, 119); margin: 15px 0px 35px;">Bu grubu sildiğinizde gruba bağlı tüm itemları da silmiş olacaksınız, silmek istediğinizden eminmisiniz?</p>
+
+                    <ul class="affected-notemark-list">
+                        <li></li>
+                    </ul>
+
+                    <div class="four columns centered margint60 ">
+                        <div class="g-button">
+                            <a class="first delete-group-btn" data-id="">EVET</a>
+                        </div>
+                        <div class="g-button">
+                            <a class="first delete-cancel-btn">IPTAL</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="row margint20 paddingt20 " id="groups">
+        <% for(var i=0; i<groups.length; i++) { %>
+        <a href="/notemark/list/<%=groups[i]._id%>">
+            <div class="three columns group-item " data-id="<%=groups[i]._id%>">
+                <div class="six columns left">
+                    <div class="group-icon <%=groups[i].color%>">
+                        <i class="icon-star"></i>
+                    </div>
+                </div>
+                <div class="six columns right">
+                    <h3><%=groups[i].title%></h3>
+                    <p><%=groups[i].subTitle.length>= 22 ? groups[i].subTitle.substring(0,20)+'...' : groups[i].subTitle%></p>
+                    <div class="item-action">
+                        <a href="#" class="delete" data-id="<%=groups[i]._id%>">Sil</a>
+                        <a href="#" class="edit switch edit-group" data-id="<%=groups[i]._id%>">Düzenle</a>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <% } %>
+    </div>
+
+</div>
+<div class="modal" id="modal1">
+    <div class="content">
+        <a class="close switch" gumby-trigger="|#modal1"><i class="icon-cancel" ></i></a>
+        <div class="row">
+            <div class="ten columns centered text-center field" >
+                <h3>Group</h3>
+                <p>Create group with tag</p>
+                <input type="text" id="title" placeholder="Title" style="margin-top:10px;"class="text input">
+                <input type="text" id="subTitle" placeholder="Sub Title" style="margin-top:10px;" class="text input">
+                <ul class="group-color">
+                    <li class="red" data-color="red"></li>
+                    <li class="yellow"  data-color="yellow"></li>
+                    <li class="blue"  data-color="blue"></li>
+                    <li class="green"  data-color="green"></li>
+                    <li class="purple"  data-color="purple"></li>
+                </ul>
+                <div class="medium btn" id="save-group" style="margin-top:20px;background: #53Cace;width: 100%;"><a href="#">Kaydet</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="modalEditGroup">
+    <div class="content">
+        <a class="close switch" gumby-trigger="|#modalEditGroup"><i class="icon-cancel" ></i></a>
+        <div class="row">
+            <div class="ten columns centered text-center field" >
+                <h3>Group</h3>
+                <p>Edit group</p>
+                <input type="hidden" id="edit-group-id">
+                <input type="text" id="title-edit" placeholder="Title" style="margin-top:10px;"class="text input">
+                <input type="text" id="subTitle-edit" placeholder="Sub Title" style="margin-top:10px;" class="text input">
+                <ul class="group-color">
+                    <li class="red" data-color="red"></li>
+                    <li class="yellow"  data-color="yellow"></li>
+                    <li class="blue"  data-color="blue"></li>
+                    <li class="green"  data-color="green"></li>
+
+                    <li class="purple"  data-color="purple"></li>
+                </ul>
+                <div class="medium btn" id="update-group-btn" style="margin-top:20px;background: #53Cace;width: 100%;"><a href="#">Kaydet</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+
+    .modal > .content {
+        background: none repeat scroll 0 0 #FFFFFF;
+        margin: 0 auto;
+        max-height: 50%;
+        min-height: 45%;
+        overflow: auto;
+        padding:20px 10px 0px 10px;
+        position: relative;
+        top: 25%;
+        width: 25%;
+        z-index: 2;
+    }
+</style>
+<script>
+    $(document).ready(function() {
+
+        $('.edit-groups').on('click',function(){
+
+            if($(this).hasClass("cancel-groups-edit")){
+                $(this).removeClass('cancel-groups-edit').addClass('edit-groups');
+                $(this).children().text('EDIT');
+                $('.group-item').children().find('p').show();
+                $('.group-item').children().find('.item-action').hide();
+            }
+            else{
+                $(this).removeClass('edit-groups').addClass('cancel-groups-edit')
+                $(this).children().text('CANCEL');
+                $('.group-item').children().find('p').hide();
+                $('.group-item').children().find('.item-action').show();
+            }
+        });
+
+        $('.cancel-groups-edit').on("click",function(){
+
+            $('.group-item').children().find('.icon-star').removeClass('icon-flash').addClass('icon-star');
+            $('.group-item').children().find('p').show();
+            $('.group-item').children().find('.item-action').hide();
+
+        });
+
+        $('ul.group-color li').on('click',function(){
+
+            $('ul.group-color li .icon-check').remove();
+            $('ul.group-color li').removeAttr('id', 'selected');
+            $(this).attr('id', 'selected');
+            $(this).html('<i class="icon-check"></i>');
+
+        });
+
+        $('#save-group').click(function(){
+
+            groupManagement.Model.Clear();
+
+            groupManagement.Model.title = $('#title').val();
+            groupManagement.Model.subTitle = $('#subTitle').val();
+            groupManagement.Model.color = $('ul.group-color li#selected').data('color');
+
+            groupManagement.Create();
+
+        });
+
+        $('.edit-group').click(function(){
+
+            var $this = $(this);
+
+            groupManagement.Model.Clear();
+            groupManagement.Model.id = $this.data('id');
+
+            groupManagement.Edit();
+        })
+
+        $('#update-group-btn').click(function(){
+
+            var $this = $(this);
+
+            groupManagement.Model.Clear();
+            groupManagement.Model.id=$('#edit-group-id').val();
+            groupManagement.Model.title = $('#title-edit').val();
+            groupManagement.Model.subTitle = $('#subTitle-edit').val();
+            groupManagement.Model.color=$('#modalEditGroup  ul.group-color li#selected').data('color');
+
+            groupManagement.Update();
+        })
+
+        $('.delete-group-btn').click(function(){
+            var $this = $(this);
+
+            groupManagement.Model.Clear();
+            groupManagement.Model.id=$this.data('id');
+
+            groupManagement.Delete();
+
+            $('.affected-mdl').hide();
+        });
+
+        $('.delete-cancel-btn').click(function(){
+            $('.edit-groups').click();
+            $('.affected-mdl').hide();
+        });
+
+        $('.delete').click(function(){
+
+
+
+            var $this = $(this);
+
+            groupManagement.Model.Clear();
+            groupManagement.Model.id=$this.data('id');
+            $('.delete-group-btn').data('id',$this.data('id'));
+            groupManagement.AffectedList();
+
+          /* groupManagement.Delete();*/
+        })
+    });
+
+
+
+</script>

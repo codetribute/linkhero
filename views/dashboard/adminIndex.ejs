@@ -1,0 +1,168 @@
+<% layout('../layout') -%>
+
+<script src="../../js/module/goygoyManagement.js"></script>
+<script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <h3><i style="color:#ff6a7d" class="fa fa-dot-circle-o"></i> Goy-Goy <small> <sup>BETA</sup>  </small><small></small></h3>
+        </div>
+    </div>
+
+
+    <div class="row mt-30">
+        <div class="col-md-8" style="margin-left: 30px; padding-top: 5px;">
+
+            <div class="add-item n-icon-btn">
+                <i  class="fa fa-search"></i>
+            </div>
+            <div class="add-item n-icon-btn">
+                <i  class="fa fa-filter"></i>
+            </div>
+            <div class="add-item n-icon-btn">
+                <i  class="fa fa-th"></i>
+            </div>
+            <div  class="add-item create-goygoy n-btn">
+                CREATE
+            </div>
+            <div id="save-goygoy"  class="add-item n-btn ">
+                SAVE
+            </div>
+        </div>
+        <div class="col-md-6 create-form">
+
+
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane tab-item active" id="home">
+                    <input type="text" placeholder="Title" id="title" name="title" style="padding-left:10px;width:30%;" class="text input add-note">
+                    <input type="text" placeholder="Link" id="link" name="link" style="padding-left:10px;width: 60%;margin-left:5px;"  class="text input add-note">
+                </div>
+                <div class="tab-pane tab-item" id="profile">	<input type="text" placeholder="Add Note" style="text-align:center;" class="text input add-note">
+
+                </div>
+                <div class="tab-pane tab-item" id="messages">	 <input type="text" placeholder="Add Link" style="text-align:center;" class="text input add-note"></div>
+                <div class="tab-pane tab-item" id="settings">	 <input type="text" placeholder="Add Other" style="text-align:center;" class="text input add-note"></div>
+            </div>
+            <ul class="nav nav-tabs add-options">
+                <li class="active"><i  class="fa fa-thumb-tack grey"></i><a href="#home" data-toggle="tab">Note</a></li>
+                <li><i  class="fa fa-flask grey"></i><a href="#profile" data-toggle="tab">Idea</a></li>
+                <li><i  class="fa fa-link grey"></i><a href="#messages" data-toggle="tab"> Link</a></li>
+                <li><i  class="fa fa-send-o grey"></i><a href="#settings" data-toggle="tab">Other</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-30">
+        <div class="col-md-12">
+            <ul class="note-ul">
+                <% for(var i=0; i<groups.length; i++) { %>
+                <li><i  class="fa fa-dot-circle-o pink"></i> <p class="title">  <%=groups[i].title%> <a href="">LINK</a></p>
+
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">  <%=groups[i].date%></p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user"> <%=groups[i].source%></p></li>
+                            <li><p class="date">-</p></li>
+                            <li><a style="color:#ff6a8d;cursor:pointer;" class="user delete-goygoy" data-id="<%=groups[i]._id%>">delete</a></li>
+                        </ul>
+                    </div>
+                   <!-- <div class="video-thumbnail">
+                        <i  class="fa fa-play pink"></i>
+                    </div>
+                    <div class="image-thumbnail">
+                        <i  class="fa fa-image pink"></i>
+                    </div>-->
+                </li>
+
+                <% } %>
+
+
+              <!--  <li><i  class="fa fa-dot-circle-o pink"></i> <p class="title">I can't  another . Please let me know what you think.</p>
+
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">01.08.2014</p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user">C.ARKIN</p></li>
+                        </ul>
+                    </div>
+                    <div class="video-thumbnail">
+                        <i  class="fa fa-play pink"></i>
+                    </div>
+                </li>
+                <li><i  class="fa fa-link grey"></i> <p class="title">Another making, I wish I could show you full pixels but at this time I can't. Please let me know  this shot!</p>
+
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">01.08.2014</p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user">SEMIH</p></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><i  class="fa fa-send-o blue"></i> <p class="title"> Here's another project in  Please let me know what you think of this know?</p>
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">01.08.2014</p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user">FATIHYIKAR</p></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <i  class="fa fa-flask yellow"></i> <p class="title">Project in the making, I wish I could show you full pixels  at this  of this but.</p>
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">01.08.2014</p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user">AHMET</p></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <i  class="fa fa-thumb-tack orange"></i>
+                    <p class="title">Project in the making, I wish I could show you full pixels  at this  of this but.</p>
+                    <div class="action-detail">
+                        <ul>
+                            <li><p class="date">01.08.2014</p></li>
+                            <li><p class="date">-</p></li>
+                            <li><p class="user">SEMIH</p></li>
+                        </ul>
+
+
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+
+</div>
+<script>
+    $('.create-goygoy').click(function(){
+        $('#save-goygoy').show();
+    });
+    $('#save-goygoy').click(function(){
+
+        groupManagement.Model.Clear();
+
+        groupManagement.Model.title = $('#title').val();
+        groupManagement.Model.link = $('#link').val();
+        groupManagement.Model.icon= "play";
+
+        groupManagement.Create();
+    });
+    $('.delete-goygoy').click(function(){
+        var $this = $(this);
+        groupManagement.Model.Clear();
+
+        groupManagement.Model.id=$this.data('id');
+
+        groupManagement.Delete();
+
+        $this.parent().parent().parent().parent().hide();
+    });
+
+</script>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Shelve Dribbble</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="humans.txt">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="stylesheet" href="/css/gumby.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css" />
+
+</head>
+<body>
+
+
+<div id="container"></div>
+<header>
+
+</header>
+<div id="container">
+    <form action="/food/save" method="post">
+
+
+            <div id="newEvent" class="event-create-form">
+                <div class="row">
+                    <select id="mealType" name="mealType" class="">
+                        <option value="breakfast">Kahvaltı</option>
+                        <option value="lunch">Öğle Yemeği</option>
+                        <option value="dinner">Akşam Yemeği</option>
+                        <option value="snack">Aparatif</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <input type="text" name="title" placeholder="Besin Adı" class="custom-textbox">
+                </div>
+                <div class="row">
+                    <input type="text" name="unit" placeholder="Birim" class="custom-textbox fifty">
+
+                    <select id="unitType" name="unitType" class="fifty">
+                        <option value="gr">Gram</option>
+                        <option value="ml">Miligram</option>
+                        <option value="portion">Porsiyon</option>
+                        <option value="total">Adet</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <input type="text" name="calorie" placeholder="Kalori Miktarı(kcal)" class="custom-textbox">
+                </div>
+                <div class="row">
+                    <input type="text" name="protein" placeholder="Protein Mktarı (gr.)" class="custom-textbox">
+                </div>
+                <div class="row">
+                    <input type="text" name="carbohydrate" placeholder="Karbonhidrat (gr.)" class="custom-textbox">
+                </div>
+                <div class="row">
+                    <input type="text" name="fat" placeholder="Yağ Oranı (gr.)" class="custom-textbox">
+                </div>
+
+                <p><input type="submit" class="btn save-btn" value="Kaydet"></p>
+            </div>
+
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,317 @@
+<% layout('../layout') -%>
+
+<script src="../../js/module/taskManagement.js"></script>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<a class="edit-group-btn switch" gumby-trigger="#modalEditNotemark"></a>
+
+<div id="edit-group-model" gumby-trigger="#modalEditNotemark"></div>
+<div class="wrapper margint20 marginb60" id="personal">
+    <div class="row">
+
+        <div class="five columns centered margint20" id="action-c">
+            <div class="four columns "> <div class="add-group-btn back-notemarks" >
+                    <a href="/taskGroup" class="first"> Back</a>
+                </div>
+            </div>
+            <div class="four columns ">
+                <div class="add-notemark-btn add-group-btn  switch" gumby-trigger="#add-notemark-modal">
+                    <a class="first"> Add Task</a>
+                </div>
+            </div>
+            <div class="four columns ">
+                <div class="add-group-btn edit-notemark">
+                    <a class="first"> Edit</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="four margint20 columns centered field">
+
+            <input type="text" placeholder="Create Task" style="text-align:center;" class="text input">
+        </div>
+    </div>
+
+
+
+    <div class="row margint20 paddingt20 notemarks" id="taskList">
+        <div class="six columns centered">
+            <ul class="task-list">
+                <% for(var i=0; i<noteMarks.length; i++) { %>
+                <li class="red-b"  data-id="<%=noteMarks[i]._id%>">
+                    <div class="group-icon <%=noteMarks[i].color=="undefined"?noteMarks[i].color:"blue"%>" style="float:left;margin-top: 3px;">
+                        <i class="icon-check"></i>
+                    </div>
+					<div class="task-detail">
+						<h5><%=noteMarks[i].title%></h5>
+						<p><%=noteMarks[i].note.length>= 35 ? noteMarks[i].note.substring(0,35)+'...' : noteMarks[i].note%></p>
+					</div>
+				</li>
+                <% } %>
+				 <!--<li class="green-b">
+					<div class="approved-box green-b">
+						<i class="icon-check"></i>
+					</div>
+					<div class="task-detail">
+						<h5>Guys uploading a title page of Government project</h5>
+						<p>I guess the little dot on the number for "Why designers leave" is a reply</p>
+					</div>
+				</li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalEditNotemark">
+    <div class="content">
+        <a class="close switch" gumby-trigger="|#modalEditNotemark"><i class="icon-cancel" ></i></a>
+        <div class="row">
+            <div class="ten columns centered text-center field" >
+                <h3>Group</h3>
+                <p>Edit group</p>
+				<input type="hidden" id="edit-notemark-id">
+                <input type="text" id="title-edit" placeholder="Title" style="margin-top:10px;"class="text input">
+                <input type="text" id="subTitle-edit" placeholder="Sub Title" style="margin-top:10px;" class="text input">
+				<input type="text" id="edit-tags" placeholder="Tags" style="margin-top:10px;" class="text input">
+                  <ul class="group-color">
+                    <li class="red" data-color="red"></li>
+                    <li class="yellow"  data-color="yellow"></li>
+                    <li class="blue"  data-color="blue"></li>
+                    <li class="green"  data-color="green"></li>
+                    <li class="purple"  data-color="purple"></li>
+					<li class="one-blue"  data-color="one-blue"></li>
+					<li class="one-yellow"  data-color="one-yellow"></li>
+                </ul>
+                <div class="medium btn" id="update-notemark-btn" style="margin-top:20px;background: #53Cace;width: 100%;"><a href="#">Kaydet</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="" class="add-task-mdl">
+<div class="wrapper">
+         <div class="row">
+            <div class="eleven columns centered text-center field" >
+                <h3>Group</h3>
+                <p>Create group with tag</p>
+                <input type="hidden" id="notemark-id" value="">
+                <input type="hidden" id="notemark-group-id" value="<%=groupId%>">
+                <input type="text" id="title" placeholder="Title" style="margin-top:10px;"class="text input">
+                <textarea rows="3" placeholder="Note" id="note"  style="margin-top:10px;" class="input textarea"></textarea>
+                <input type="text" id="endDate" placeholder="End Date" style="margin-top:10px;" class="text input">
+                <input type="text" id="tags" placeholder="Tags" style="margin-top:10px;" class="text input">
+
+                  <ul class="group-color">
+                    <li class="red" data-color="red"></li>
+                    <li class="yellow"  data-color="yellow"></li>
+                    <li class="blue"  data-color="blue"></li>
+                    <li class="green"  data-color="green"></li>
+                    <li class="purple"  data-color="purple"></li>
+                </ul>
+                <div class="medium btn" id="save-notemark" style="margin-top:20px;background: #53Cace;width: 100%;"><a href="#">Kaydet</a></div>
+
+                <div class="medium btn" id="update-notemarks" style="margin-top:20px;background: #53Cace;width: 100%;"><a href="#">Güncelle</a></div>
+
+            </div>
+
+        </div>
+	</div>
+</div>
+
+
+<div id="" class="task-menu-mdl ">
+	<!--<div class="q-menu-header">
+		
+	</div>
+	<div class="q-menu margint20">
+		<ul>
+			<li style="background:#6bc3c0"><i class="icon-check"></i></li>
+			<li style="background:#e56e6a"><i class="icon-feather"></i></li>
+			<li style="background:#bda5d7"><i class="icon-doc-landscape"></i></li>
+		</ul>
+	</div>-->
+    <div class="wrapper margint60">
+        <div class="row">
+		 <div class="eleven columns centered text-center field margint60"  style="margin-top:20px;margin-left: 0px;">
+			<img width="40" src="../../img/calendar.png">
+		 </div>
+            <div class="eleven columns centered text-center field margint60"  style="margin-top:60px;">
+
+
+                <ul class="task-menu">
+                    <li class="" data-color="red"><div class="icn"> <i class="fa fa-circle c-red"></i> </div><div class="menu-title">TODAY <span>7</span></div></li>
+                    <li class=""  data-color="yellow"><div class="icn"> <i class="fa fa-circle c-turquoise"></i> </div><div class="menu-title">TOMORROW<span>2</span></div></li>
+                    <li class=""  data-color="blue"><div class="icn"> <i class="fa fa-circle c-one-blue"></i>  </div><div class="menu-title">WEEK<span>9</span></div></li>
+                    <li class=""  data-color="green"><div class="icn">  <i class="fa fa-circle c-purple"></i> </div><div class="menu-title">COMPLETED<span>4</span></div></li>
+                </ul>
+
+            </div>
+			 <div class="seven columns centered text-center field margint60"  style="border-bottom: 1px solid #ebebeb;border-top: 1px solid #ebebeb;margin-left: 15.19883%;">
+
+				<div class="setting-btn lock">
+					<i class="fa fa-lock c-red"></i>
+				</div>
+				<div class="setting-btn favorite">
+					<i class="fa fa-star c-red"></i>
+				</div>
+				<div class="setting-btn pin">
+					<i class="fa fa-thumb-tack c-red"></i>
+				</div>
+            </div>
+			 <div class="seven columns centered text-center field margint60"  style="margin-top:20px;margin-left: 15.19883%;">
+
+				<div class="task-bar-btn complated">
+					COMPLETE
+				</div>
+				<div class="task-bar-btn archive">
+					ARCHIVE
+				</div>
+				<div class="task-bar-btn delete">
+					DELETE
+				</div>
+            </div>
+			
+			
+
+        </div>
+    </div>
+</div>
+<script>
+    var oldieCheck = Boolean(document.getElementsByTagName('html')[0].className.match(/\soldie\s/g));
+    if(!oldieCheck) {
+        document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"><\/script>');
+    } else {
+        document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"><\/script>');
+    }
+</script>
+<script>
+    if(!window.jQuery) {
+        if(!oldieCheck) {
+            document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+        } else {
+            document.write('<script src="js/libs/jquery-1.10.1.min.js"><\/script>');
+        }
+    }
+</script>
+
+
+<style>
+
+
+    body{background: #fff !important;}
+    .add-task-mdl{
+        background: #f7f8f9;
+        border-right: 1px solid #ebebeb;
+    }
+    .modal > .content {
+        background: none repeat scroll 0 0 #FFFFFF;
+        margin: 0 auto;
+        max-height: 50%;
+        min-height: 45%;
+        overflow: auto;
+        padding:20px 10px 0px 10px;
+        position: relative;
+        top: 25%;
+        width: 25%;
+        z-index: 2;
+    }
+</style>
+<script>
+    $(document).ready(function() {
+
+        $('.back-notemarks').on('click', function(){var thisHref = $(this).attr('href'); window.location.href = thisHref})
+
+
+        $('.edit-notemark').on('click',function(){
+            /*$('.group-item .group-icon').toggleClass('grey');*/
+            if($(this).hasClass("cancel-notemark-edit")){
+                $(this).removeClass('cancel-notemark-edit').addClass('edit-notemark');
+                $(this).children().text('EDIT');
+                $('.group-item').children().find('p').show();
+                $('.group-item').children().find('.item-action').hide();
+            }
+            else{
+                $(this).removeClass('edit-notemark').addClass('cancel-notemark-edit')
+                $(this).children().text('CANCEL');
+                $('.group-item').children().find('p').hide();
+                $('.group-item').children().find('.item-action').show();
+            }
+        });
+
+        $('.cancel-notemark-edit').on("click",function(){
+
+            $('.group-item').children().find('.icon-star').removeClass('icon-flash').addClass('icon-star');
+            $('.group-item').children().find('p').show();
+            $('.group-item').children().find('.item-action').hide();
+
+        });
+
+        $('ul.group-color li').on('click',function(){
+
+            $('ul.group-color li .icon-check').remove();
+            $('ul.group-color li').removeAttr('id', 'selected');
+            $(this).attr('id', 'selected');
+            $(this).html('<i class="icon-check"></i>');
+
+        });
+
+        $('#save-notemark').click(function(){
+
+            if(taskManagement.Validate())
+            {
+                taskManagement.Model.Clear();
+                taskManagement.Model.color = $('ul.group-color li#selected').data('color');
+                taskManagement.Model.title = $('#title').val();
+                taskManagement.Model.note = $('#note').val();
+                taskManagement.Model.taskGroup = $('#notemark-group-id').val();
+                taskManagement.Model.endDate = $('#endDate').val();
+
+                taskManagement.Create();
+            }
+        });
+
+        $('.edit-group').click(function(){
+            var $this = $(this);
+
+            taskManagement.Model.Clear();
+            taskManagement.Model.id =$this.data('id');
+
+            taskManagement.Edit();
+        })
+
+
+        $('.delete-notemark').click(function(){
+
+            var $this = $(this);
+            taskManagement.Model.Clear();
+            taskManagement.Model.id=$this.data('id');
+
+            taskManagement.Delete();
+
+        })
+		
+		$('.add-notemark-btn').click(function(){
+            taskManagement.Modal.Open();
+            $('#save-notemark').show();
+            $('#update-notemarks').hide();
+        })
+
+        $('#update-notemarks').on("click",function(){
+
+            if(taskManagement.Validate())
+            {
+                taskManagement.Model.Clear();
+                taskManagement.Model.id = $('#notemark-id').val();
+                taskManagement.Model.color = $('.add-notemark-mdl  ul.group-color li#selected').data('color');
+                taskManagement.Model.title = $('#title').val();
+                taskManagement.Model.subTitle = $('#subTitle').val();
+                taskManagement.Model.taskGroup = $('#notemark-group-id').val();
+                taskManagement.Model.content = $('#content').val();
+
+                taskManagement.Update();
+            }
+        })
+    });
+
+
+
+</script>
